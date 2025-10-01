@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mia Carulasan Portfolio</title>
+    <title>Mia Mirasol</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Font -->
@@ -11,7 +11,9 @@
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-
+    <!-- Add GSAP CDN in <head> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
       .special-font {
         font-family: "Great Vibes", cursive;
@@ -28,7 +30,7 @@
 
       .section-title {
         font-family: "Great Vibes", cursive;
-        font-size: 2rem;
+        font-size: 5rem;
         color: #2c3e50;
         margin-bottom: 1rem;
         text-align: center;
@@ -49,27 +51,31 @@
       <nav
         class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold text-[#2c3e50]">Mia Carulasan</a>
+        <a href="#" class="text-2xl font-bold text-[#2c3e50]"
+          >My Personal E-Portfolio</a
+        >
         <ul class="hidden md:flex gap-8 text-gray-700 font-semibold">
           <li>
-            <a href="#about" class="hover:text-[#9CAF88] transition">About</a>
+            <a href="#home" class="hover:text-[#9CAF88] transition">HOME</a>
           </li>
           <li>
-            <a href="#education" class="hover:text-[#9CAF88] transition"
-              >Education</a
+            <a href="#about" class="hover:text-[#9CAF88] transition"
+              >PERSONAL INFORMATION</a
             >
           </li>
           <li>
-            <a href="#skills" class="hover:text-[#9CAF88] transition">Skills</a>
+            <a href="#introduction" class="hover:text-[#9CAF88] transition"
+              >INTRODUCTION</a
+            >
           </li>
           <li>
-            <a href="#projects" class="hover:text-[#9CAF88] transition"
-              >Projects</a
+            <a href="#introduction" class="hover:text-[#9CAF88] transition"
+              >LEARNING ARTIFACTS</a
             >
           </li>
           <li>
             <a href="#contact" class="hover:text-[#9CAF88] transition"
-              >Contact</a
+              >MULTIMEDIA EVIDENCE</a
             >
           </li>
         </ul>
@@ -98,24 +104,26 @@
       <div id="mobileMenu" class="hidden md:hidden bg-white px-8 pb-4">
         <ul class="flex flex-col gap-4 text-gray-700 font-semibold">
           <li>
-            <a href="#about" class="hover:text-[#9CAF88] transition">About</a>
+            <a href="#home" class="hover:text-[#9CAF88] transition">HOME</a>
           </li>
           <li>
-            <a href="#education" class="hover:text-[#9CAF88] transition"
-              >Education</a
+            <a href="#about" class="hover:text-[#9CAF88] transition"
+              >PERSONAL INFORMATION</a
             >
           </li>
           <li>
-            <a href="#skills" class="hover:text-[#9CAF88] transition">Skills</a>
+            <a href="#introduction" class="hover:text-[#9CAF88] transition"
+              >INTRODUCTION</a
+            >
           </li>
           <li>
             <a href="#projects" class="hover:text-[#9CAF88] transition"
-              >Projects</a
+              >LEARNING ARTIFACTS</a
             >
           </li>
           <li>
             <a href="#contact" class="hover:text-[#9CAF88] transition"
-              >Contact</a
+              >MULTIMEDIA EVIDENCE</a
             >
           </li>
         </ul>
@@ -124,70 +132,249 @@
 
     <!-- Hero Section -->
     <section
-      class="relative min-h-screen flex flex-col justify-center items-center text-center pt-32 px-4 sm:px-8 overflow-hidden"
+      id="home"
+      class="relative min-h-screen flex flex-col justify-center items-center text-center pt-24 sm:pt-32 px-4 sm:px-8 overflow-hidden"
     >
       <!-- Background -->
       <div id="heroBg" class="absolute inset-0 overflow-hidden">
         <img
-          src="sunflower.jpg"
+          src="images/sunflower.jpg"
           alt="Sunflower Background"
           class="w-full h-full object-cover"
         />
-        <div class="absolute inset-0 bg-black opacity-40"></div>
       </div>
 
       <!-- Profile & Name -->
       <div class="relative flex flex-col items-center gap-6">
+        <!-- Profile Image -->
         <div
-          class="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#9CAF88] shadow-lg"
+          class="w-[60vw] h-[60vw] sm:w-[40vw] sm:h-[40vw] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden"
         >
           <img
-            src="anya.png"
+            src="images/luf.png"
             alt="Profile"
             class="w-full h-full object-cover"
           />
         </div>
+
+        <!-- Name -->
         <h1
           id="name"
-          class="special-font text-3xl sm:text-4xl md:text-5xl"
-        ></h1>
+          class="special-font text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white drop-shadow-md"
+        >
+          <!-- Your name will go here -->
+        </h1>
       </div>
-
-      <!-- Hero Text & Button -->
-      <p
-        class="relative text-[#FFFDF6] text-lg sm:text-xl md:text-2xl max-w-xl mt-4"
-      >
-        WAIT LANG DI PA TAPOS. GANDA MO TALAGA, BE. I MISS YOU :3
-      </p>
-      <a
-        href="#about"
-        class="relative mt-6 px-6 py-3 bg-[#9CAF88] text-white font-semibold rounded-lg shadow hover:bg-[#8AA876] transition"
-        >Explore My Portfolio</a
-      >
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="py-20 px-8 bg-white flex flex-col items-center">
-      <h2 class="section-title">About Me</h2>
-      <p
-        class="max-w-3xl text-center text-gray-700 text-lg leading-relaxed mt-4"
+    <section
+      id="about"
+      class="py-20 px-6 bg-gradient-to-b from-gray-50 to-white flex flex-col items-center"
+    >
+      <!-- Section Title -->
+      <h2 class="section-title">
+        About Me
+        <span
+          class="absolute left-1/2 -bottom-2 w-20 h-1 bg-[#2c3e50] rounded-full transform -translate-x-1/2"
+        ></span>
+      </h2>
+
+      <!-- Container -->
+      <div
+        class="max-w-5xl w-full bg-white border border-gray-200 shadow-xl rounded-2xl p-10 md:p-14 flex flex-col md:flex-row gap-10 items-center"
       >
-        WAIT LANG DI PA TAPOS. MAHAL NA MAHAL KITA, BE. I LOVE YOU SO SO SO
-        MUCH!
-      </p>
+        <!-- Profile Image -->
+        <div class="flex-shrink-0">
+          <img
+            src="images/profile.jpg"
+            alt="Profile Picture"
+            class="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full border-4 border-[#2c3e50] shadow-md"
+          />
+        </div>
+
+        <!-- Details -->
+        <div class="flex-1 space-y-6 text-gray-700 text-lg leading-relaxed">
+          <!-- Intro -->
+          <p class="text-justify text-gray-600 italic">
+            Hello! I’m
+            <span class="font-semibold text-[#2c3e50]">Mia Mirasol</span>,
+            PALITAN MO ITO BE DEPENDE SA GUSTO M O ILAGAY
+          </p>
+
+          <!-- Information List -->
+          <ul class="space-y-5">
+            <!-- Full Name -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.785.676 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Full Name:</span> Mia Mirasol</span
+              >
+            </li>
+
+            <!-- Birthday -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Birthday:</span> May 19, 2003</span
+              >
+            </li>
+
+            <!-- Email -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 12H8m8 0l-4 4m4-4l-4-4"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Email:</span>
+                miamirasol19@gmail.com</span
+              >
+            </li>
+
+            <!-- Phone -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5v2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 7h2a2 2 0 012 2v2a2 2 0 01-2 2h-2V7zm0 6h2a2 2 0 012 2v2a2 2 0 01-2 2h-2v-6z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Phone:</span> +63 909 678
+                5397</span
+              >
+            </li>
+
+            <!-- Location -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 11c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zM12 11v10"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Location:</span> Lower Baribe,
+                Brgy. Aribungos, Brooke's Point, Palawan</span
+              >
+            </li>
+
+            <!-- Profession -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Profession:</span> Student</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Education Section -->
     <section
-      id="education"
-      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center"
+      id="introduction"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
     >
-      <h2 class="section-title">Education</h2>
-      <ul class="max-w-3xl space-y-4 text-gray-700 text-lg mt-4">
-        <li><strong>SChool ni Mia</strong> - Senior High, 2020-2022</li>
+      <h2 class="section-title">Introduction</h2>
+
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        I believe that education is not just about acquiring knowledge, but
+        about nurturing curiosity, values, and the ability to inspire others. As
+        a future educator, I see teaching as a way of guiding learners to
+        discover their own potential, encouraging lifelong learning, and shaping
+        them into responsible individuals who can make a difference in society.
+      </p>
+
+      <ul class="max-w-3xl space-y-4 text-gray-700 text-lg mt-6 text-left">
+        <li><strong>SChool ni Mia</strong> – Senior High, 2020–2022</li>
         <li>
-          <strong>Palawan State University</strong> - Bachelor of Elementary
-          Education, 2022-Present
+          <strong>Palawan State University</strong> – Bachelor of Elementary
+          Education, 2022–Present
         </li>
       </ul>
     </section>
@@ -197,7 +384,7 @@
       id="skills"
       class="py-16 sm:py-20 px-4 sm:px-8 bg-white relative flex flex-col items-center"
     >
-      <h2 class="section-title text-xl sm:text-2xl z-10 relative">Skills</h2>
+      <h2 class="section-title">Skills</h2>
 
       <!-- Carousel Container -->
       <div class="w-full overflow-hidden mt-6 relative">
@@ -264,86 +451,62 @@
       id="projects"
       class="py-16 sm:py-20 px-4 sm:px-8 bg-[#FFFDF6] flex flex-col items-center"
     >
-      <h2 class="section-title text-xl sm:text-2xl">Projects</h2>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 w-full max-w-6xl"
-      >
-        <!-- Example Project Card -->
-        <div
-          class="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition transform"
-        >
-          <img
-            src="images/project1.png"
-            alt="Project 1"
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-4">
-            <h3 class="font-semibold text-lg text-[#2c3e50]">
-              Interactive Lesson Plan
-            </h3>
-            <p class="text-gray-600 mt-2 text-sm sm:text-base">
-              WAIT LANG DI PA TAPOS.
-            </p>
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition transform"
-        >
-          <img
-            src="images/project2.png"
-            alt="Project 2"
-            class="w-full h-48 object-cover"
-          />
-          <div class="p-4">
-            <h3 class="font-semibold text-lg text-[#2c3e50]">
-              Educational Blog
-            </h3>
-            <p class="text-gray-600 mt-2 text-sm sm:text-base">
-              WAIT LANG DI PA TAPOS.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section
-      id="contact"
-      class="py-20 px-8 bg-white flex flex-col items-center"
-    >
-      <h2 class="section-title">Contact Me</h2>
-      <p class="text-gray-700 text-lg text-center max-w-3xl mt-2">
-        Feel free to reach out for collaborations, questions, or just a friendly
-        hello!
+      <h2 class="section-title">Projects</h2>
+      <p class="text-gray-700 text-center mt-2 max-w-3xl">
+        A showcase of my artworks, creative projects, and designs. ✨
       </p>
-      <form class="mt-8 w-full max-w-lg flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#9CAF88] focus:outline-none"
+
+      <!-- Collage Grid -->
+      <div
+        class="mt-10 w-full max-w-6xl columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
+      >
+        <img
+          src="images/anya.png"
+          alt="Artwork 1"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
         />
-        <input
-          type="email"
-          placeholder="Your Email"
-          class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#9CAF88] focus:outline-none"
+        <img
+          src="images/project2.png"
+          alt="Artwork 2"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
         />
-        <textarea
-          placeholder="Message"
-          rows="5"
-          class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#9CAF88] focus:outline-none"
-        ></textarea>
-        <button
-          type="submit"
-          class="mt-2 px-6 py-3 bg-[#9CAF88] text-white font-semibold rounded-lg shadow hover:bg-[#8AA876] transition"
-        >
-          Send Message
-        </button>
-      </form>
+        <img
+          src="images/project3.png"
+          alt="Artwork 3"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <img
+          src="images/project4.png"
+          alt="Artwork 4"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <img
+          src="images/project5.png"
+          alt="Artwork 5"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <img
+          src="images/project6.png"
+          alt="Artwork 6"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <img
+          src="images/project7.png"
+          alt="Artwork 7"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <img
+          src="images/project8.png"
+          alt="Artwork 8"
+          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
+        />
+        <!-- Add more if needed -->
+      </div>
     </section>
 
     <script>
       // Typewriter Effect
-      const nameText = "Mia D. Mirasol Carulasan";
+      const nameText = "Mia D. Mirasol";
       const nameElement = document.getElementById("name");
       let i = 0;
       let isDeleting = false;
@@ -383,7 +546,46 @@
         // Adjust the 0.5 multiplier to control speed
         heroBg.style.transform = `translateY(${offset * 0.5}px)`;
       });
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animate each section on scroll
+      document.querySelectorAll("section").forEach((section, i) => {
+        gsap.from(section, {
+          opacity: 0,
+          y: 80, // slide up
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%", // when 80% of section enters viewport
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      // Extra: Animate navbar when page loads
+      gsap.from("header", {
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // Animate profile image
+      gsap.from(".rounded-full", {
+        scale: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "elastic.out(1, 0.5)",
+      });
+
+      // Animate name with fade-in (while typewriter still runs)
+      gsap.from("#name", {
+        opacity: 0,
+        duration: 1,
+        delay: 1.2,
+      });
     </script>
   </body>
 </html>
-
