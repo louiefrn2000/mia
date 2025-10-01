@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mia Mirasol</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Add GSAP CDN in <head> -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
       .special-font {
         font-family: "Great Vibes", cursive;
@@ -27,7 +23,6 @@
         display: inline-block;
         min-width: 25ch;
       }
-
       .section-title {
         font-family: "Great Vibes", cursive;
         font-size: 5rem;
@@ -35,13 +30,21 @@
         margin-bottom: 1rem;
         text-align: center;
       }
-
       html {
         scroll-behavior: smooth;
       }
       #heroBg {
         will-change: transform;
       }
+        @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    display: flex;
+    width: 200%; /* contains both sets */
+    animation: marquee 25s linear infinite;
+  }
     </style>
   </head>
 
@@ -51,9 +54,7 @@
       <nav
         class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold text-[#2c3e50]"
-          >My Personal E-Portfolio</a
-        >
+        <a href="#" class="text-2xl font-bold text-[#2c3e50]"> </a>
         <ul class="hidden md:flex gap-8 text-gray-700 font-semibold">
           <li>
             <a href="#home" class="hover:text-[#9CAF88] transition">HOME</a>
@@ -69,13 +70,23 @@
             >
           </li>
           <li>
-            <a href="#introduction" class="hover:text-[#9CAF88] transition"
+            <a href="#artifacts" class="hover:text-[#9CAF88] transition"
               >LEARNING ARTIFACTS</a
             >
           </li>
           <li>
-            <a href="#contact" class="hover:text-[#9CAF88] transition"
+            <a href="#evidence" class="hover:text-[#9CAF88] transition"
               >MULTIMEDIA EVIDENCE</a
+            >
+          </li>
+          <li>
+            <a href="#reflection" class="hover:text-[#9CAF88] transition"
+              >RFA</a
+            >
+          </li>
+          <li>
+            <a href="#future-goals" class="hover:text-[#9CAF88] transition"
+              >FUTURE GOALS</a
             >
           </li>
         </ul>
@@ -117,13 +128,23 @@
             >
           </li>
           <li>
-            <a href="#projects" class="hover:text-[#9CAF88] transition"
+            <a href="#artifacts" class="hover:text-[#9CAF88] transition"
               >LEARNING ARTIFACTS</a
             >
           </li>
           <li>
-            <a href="#contact" class="hover:text-[#9CAF88] transition"
+            <a href="#evidence" class="hover:text-[#9CAF88] transition"
               >MULTIMEDIA EVIDENCE</a
+            >
+          </li>
+          <li>
+            <a href="#reflection" class="hover:text-[#9CAF88] transition"
+              >RFA</a
+            >
+          </li>
+          <li>
+            <a href="#future-goals" class="hover:text-[#9CAF88] transition"
+              >FUTURE GOALS</a
             >
           </li>
         </ul>
@@ -147,13 +168,11 @@
       <!-- Profile & Name -->
       <div class="relative flex flex-col items-center gap-6">
         <!-- Profile Image -->
-        <div
-          class="w-[60vw] h-[60vw] sm:w-[40vw] sm:h-[40vw] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] overflow-hidden"
-        >
+        <div class="overflow-hidden rounded-xl">
           <img
-            src="an.png"
+            src="be.png"
             alt="Profile"
-            class="w-full h-full object-cover"
+            class="w-auto h-auto max-w-full max-h-[80vh] object-contain"
           />
         </div>
 
@@ -170,15 +189,9 @@
     <!-- About Me Section -->
     <section
       id="about"
-      class="py-20 px-6 bg-gradient-to-b from-gray-50 to-white flex flex-col items-center"
+      class="py-20 px-6 bg-[#FFFDF6] flex flex-col items-center"
     >
-      <!-- Section Title -->
-      <h2 class="section-title">
-        About Me
-        <span
-          class="absolute left-1/2 -bottom-2 w-20 h-1 bg-[#2c3e50] rounded-full transform -translate-x-1/2"
-        ></span>
-      </h2>
+      <h2 class="section-title">Personal Information</h2>
 
       <!-- Container -->
       <div
@@ -187,7 +200,7 @@
         <!-- Profile Image -->
         <div class="flex-shrink-0">
           <img
-            src="anya.png"
+            src="be.png"
             alt="Profile Picture"
             class="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full border-4 border-[#2c3e50] shadow-md"
           />
@@ -199,7 +212,11 @@
           <p class="text-justify text-gray-600 italic">
             Hello! I’m
             <span class="font-semibold text-[#2c3e50]">Mia Mirasol</span>,
-            PALITAN MO ITO BE DEPENDE SA GUSTO M O ILAGAY
+            Welcome to my Electronic Portfolio! I am currently a 3rd year
+            College Student of Palawan State University in Brooke's Point,
+            Palawan. I am majoring in Bachelor of Elementary Education. Thank
+            you for taking the time to vising my site and learn a little bit
+            more about me.
           </p>
 
           <!-- Information List -->
@@ -224,7 +241,8 @@
                 </svg>
               </div>
               <span
-                ><span class="font-semibold">Full Name:</span> Mia Mirasol</span
+                ><span class="font-semibold">Full Name:</span> Mia Dela Torre
+                Mirasol</span
               >
             </li>
 
@@ -369,142 +387,260 @@
         discover their own potential, encouraging lifelong learning, and shaping
         them into responsible individuals who can make a difference in society.
       </p>
-
-      <ul class="max-w-3xl space-y-4 text-gray-700 text-lg mt-6 text-left">
-        <li><strong>SChool ni Mia</strong> – Senior High, 2020–2022</li>
-        <li>
-          <strong>Palawan State University</strong> – Bachelor of Elementary
-          Education, 2022–Present
-        </li>
-      </ul>
     </section>
 
-    <!-- Skills Section with Modern Minimalist Carousel -->
+    <!-- Learning Artifacts Section -->
     <section
-      id="skills"
-      class="py-16 sm:py-20 px-4 sm:px-8 bg-white relative flex flex-col items-center"
+      id="artifacts"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
     >
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">Learning Artifacts</h2>
 
       <!-- Carousel Container -->
-      <div class="w-full overflow-hidden mt-6 relative">
-        <!-- Background overlay for subtle focus -->
-        <div class="absolute inset-0 bg-gray-100/30 rounded-xl z-0"></div>
+      <div class="swiper mt-10 w-full max-w-5xl">
+        <div class="swiper-wrapper">
+          <!-- Assignment -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg p-6 text-left">
+              <h3 class="text-xl font-semibold text-[#2c3e50]">Assignment</h3>
+              <p class="mt-2 text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                in ligula vitae neque facilisis egestas.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-4 text-[#2c3e50] font-medium hover:underline"
+                >View Work →</a
+              >
+            </div>
+          </div>
 
-        <!-- Scrolling Carousel -->
-        <div
-          class="flex gap-6 whitespace-nowrap animate-carousel z-10 relative"
-        >
-          <span class="skill-pill">Classroom Management</span>
-          <span class="skill-pill">Lesson Planning</span>
-          <span class="skill-pill">Public Speaking</span>
-          <span class="skill-pill">Creative Teaching</span>
-          <span class="skill-pill">Team Collaboration</span>
+          <!-- Project -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg p-6 text-left">
+              <h3 class="text-xl font-semibold text-[#2c3e50]">Project</h3>
+              <p class="mt-2 text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                in ligula vitae neque facilisis egestas.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-4 text-[#2c3e50] font-medium hover:underline"
+                >View Project →</a
+              >
+            </div>
+          </div>
 
-          <!-- Repeat for continuous effect -->
-          <span class="skill-pill">Classroom Management</span>
-          <span class="skill-pill">Lesson Planning</span>
-          <span class="skill-pill">Public Speaking</span>
-          <span class="skill-pill">Creative Teaching</span>
-          <span class="skill-pill">Team Collaboration</span>
+          <!-- Presentation -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg p-6 text-left">
+              <h3 class="text-xl font-semibold text-[#2c3e50]">Presentation</h3>
+              <p class="mt-2 text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                in ligula vitae neque facilisis egestas.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-4 text-[#2c3e50] font-medium hover:underline"
+                >View Slides →</a
+              >
+            </div>
+          </div>
+
+          <!-- Lesson Plan -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg p-6 text-left">
+              <h3 class="text-xl font-semibold text-[#2c3e50]">Lesson Plan</h3>
+              <p class="mt-2 text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                in ligula vitae neque facilisis egestas.
+              </p>
+              <a
+                href="#"
+                class="inline-block mt-4 text-[#2c3e50] font-medium hover:underline"
+                >View Plan →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-6">
+          <div class="swiper-button-prev text-[#2c3e50]"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next text-[#2c3e50]"></div>
         </div>
       </div>
+    </section>
+    <!-- Multimedia Evidence Section -->
+    <section
+      id="evidence"
+      class="py-12 px-4 sm:py-16 sm:px-6 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Multimedia Evidence</h2>
 
-      <style>
-        /* Carousel Animation */
-        @keyframes carousel {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
+      <!-- Infinite Marquee Carousel -->
+      <div class="relative w-full overflow-hidden mt-8 sm:mt-10">
+        <div class="flex animate-marquee space-x-3 sm:space-x-4">
+          <!-- First set of images -->
+          <img
+            src="a1.jpg"
+            alt="Evidence 1"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a2.jpg"
+            alt="Evidence 2"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a3.jpg"
+            alt="Evidence 3"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a4.jpg"
+            alt="Evidence 4"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a5.jpg"
+            alt="Evidence 5"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a6.jpg"
+            alt="Evidence 6"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a7.jpg"
+            alt="Evidence 7"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a8.jpg"
+            alt="Evidence 8"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a9.jpg"
+            alt="Evidence 9"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a10.jpg"
+            alt="Evidence 10"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
 
-        .animate-carousel {
-          display: inline-flex;
-          animation: carousel 20s linear infinite;
-        }
+          <!-- Duplicate set for looping -->
+          <img
+            src="a1.jpg"
+            alt="Evidence 1"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a2.jpg"
+            alt="Evidence 2"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a3.jpg"
+            alt="Evidence 3"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a4.jpg"
+            alt="Evidence 4"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a5.jpg"
+            alt="Evidence 5"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a6.jpg"
+            alt="Evidence 6"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a7.jpg"
+            alt="Evidence 7"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a8.jpg"
+            alt="Evidence 8"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a9.jpg"
+            alt="Evidence 9"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="a10.jpg"
+            alt="Evidence 10"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Reflection, Feedback, and Assessment Section -->
+    <section
+      id="reflection"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Reflection, Feedback, and Assessment</h2>
 
-        .skill-pill {
-          padding: 0.5rem 1rem;
-          background-color: transparent; /* remove green */
-          color: #2c3e50; /* dark text for contrast */
-          font-weight: 600;
-          font-size: 0.9rem;
-          border-radius: 9999px;
-          white-space: nowrap;
-          border: 2px solid #2c3e50; /* subtle outline */
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .skill-pill:hover {
-          transform: scale(1.1);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-      </style>
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        Reflection allows me to evaluate my teaching practices and understand
+        what worked well and what needs improvement. Feedback from peers,
+        mentors, and students helps me see multiple perspectives, strengthening
+        both my teaching strategies and professional growth. Through assessment,
+        I measure not only student performance but also my effectiveness as an
+        educator, ensuring that learning outcomes are achieved and continuously
+        improved.
+      </p>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Future Goals Section -->
     <section
-      id="projects"
-      class="py-16 sm:py-20 px-4 sm:px-8 bg-[#FFFDF6] flex flex-col items-center"
+      id="future-goals"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
     >
-      <h2 class="section-title">Projects</h2>
-      <p class="text-gray-700 text-center mt-2 max-w-3xl">
-        A showcase of my artworks, creative projects, and designs. ✨
-      </p>
+      <h2 class="section-title">Future Goals</h2>
 
-      <!-- Collage Grid -->
-      <div
-        class="mt-10 w-full max-w-6xl columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
-      >
-        <img
-          src="anya.png"
-          alt="Artwork 1"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project2.png"
-          alt="Artwork 2"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project3.png"
-          alt="Artwork 3"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project4.png"
-          alt="Artwork 4"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project5.png"
-          alt="Artwork 5"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project6.png"
-          alt="Artwork 6"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project7.png"
-          alt="Artwork 7"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <img
-          src="images/project8.png"
-          alt="Artwork 8"
-          class="w-full rounded-lg shadow-md hover:scale-105 hover:shadow-xl transition transform duration-300"
-        />
-        <!-- Add more if needed -->
-      </div>
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        As I continue my journey in education, I aspire to become a teacher who
+        not only imparts knowledge but also inspires students to dream, explore,
+        and achieve their full potential. My future goals include pursuing
+        advanced studies in education, engaging in community outreach programs,
+        and creating innovative teaching methods that foster inclusivity and
+        lifelong learning.
+      </p>
     </section>
 
     <script>
+      const swiper = new Swiper(".swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 }, // tablet
+          1024: { slidesPerView: 3 }, // desktop
+        },
+      });
       // Typewriter Effect
       const nameText = "Mia D. Mirasol";
       const nameElement = document.getElementById("name");
@@ -589,9 +725,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
