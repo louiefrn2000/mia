@@ -179,12 +179,6 @@
               border: 1px solid rgba(156, 175, 136, 0.06);
             "
           >
-            <h2
-              class="text-2xl font-semibold mb-4 text-center sm:text-left"
-              style="color: var(--sage-500)"
-            >
-              For You, My Heart
-            </h2>
             <div
               id="letterContent"
               class="text-gray-700 leading-relaxed text-sm sm:text-base"
@@ -196,12 +190,62 @@
 
       <footer
         class="mt-6 text-center text-[10px] sm:text-xs text-gray-400 italic"
-      >
-        Made with a little secret and a lot of heart 💌
-      </footer>
+      ></footer>
     </main>
 
+    <!-- Hidden YouTube Player -->
+    <div id="player" style="display: none"></div>
+
     <script>
+      // Load YouTube IFrame API
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "0",
+          width: "0",
+          videoId: "BkZzr7Je8-Y", // Celeste by Tothapi
+          playerVars: {
+            autoplay: 1,
+            loop: 1,
+            playlist: "BkZzr7Je8-Y", // kailangan same video ID para mag-loop
+            controls: 0,
+            modestbranding: 1,
+            rel: 0,
+            mute: 0,
+          },
+          events: {
+            onReady: function (event) {
+              event.target.playVideo(); // Agad mag-play pag loaded
+            },
+          },
+        });
+      }
+
+      // Trigger play after correct password
+      function playYTMusic() {
+        if (player && player.playVideo) {
+          player.playVideo();
+        }
+      }
+
+      // Sa iyong tryOpen() function:
+      function tryOpen() {
+        const val = (pwdInput.value || "").trim();
+        if (val === CORRECT) {
+          document.getElementById("passwordSection").style.display = "none";
+          revealLetter();
+          playYTMusic(); // simulan ang YouTube music
+        } else {
+          wrongFeedback();
+        }
+        pwdInput.value = "";
+      }
+
       const CORRECT = "070725";
       const pwdInput = document.getElementById("pwd");
       const openBtn = document.getElementById("openBtn");
@@ -227,33 +271,26 @@
       const LOVE_LETTER = `
 My dearest Mia, my Mahal, my Darling,<br><br>
 
-Three moons have passed, my sweetest love,<br>
-And still, you’re all I’m dreaming of.<br>
-Each day with you feels soft, brand new —<br>
-A world made bright because of you.<br><br>
+Sa tatlong buwang kay bilis lumipas,<br>
+Pag-ibig natin, tila’y di kumukupas.<br>
+Madalas mang magtalo, magtampuhan paminsan,<br>
+Sa dulo’y lambingan, halakhak, at asaran.<br><br>
 
-You’ve taught my heart what peace can be,<br>
-A love so kind, so warm, so free.<br>
-Mia, my Baby, my gentle song,<br>
-With you is where my heart belongs.<br><br>
+Lagi, sa dapithapon na payapang dumaratal,<br>
+Boses mong musika sa araw kong banal.<br>
+Sa bawat tampo’t pagdaramdam na dumadalaw,<br>
+Isang “Mahal kita” lang muling naglalaho ang alingawngaw.<br><br>
 
-Through every laugh, through every sigh,<br>
-You paint my soul across the sky.<br>
-The way you speak, the way you care,<br>
-Turns simple moments into prayer.<br><br>
+Nangako akong ikaw ay dadalhin sa altar,<br>
+Iibigin ka nang lampas sa hangganang mortal.<br>
+Sa’yo ko natutunang mangarap nang gising,<br>
+Habang buhay, ikaw ang dahilan ng aking pag-ising.<br><br>
 
-Three months with you — my greatest start,<br>
-Each beat of mine spells out your part.<br>
-If time could freeze, I’d choose today,<br>
-Where love and you both choose to stay.<br><br>
+Sa mata ng pag-ibig na kailanma’y di magmamaliw,<br>
+Mamahalin kitang tapat hanggang sa dulo ng langit, aking giliw.<br><br>
 
-So here’s my vow, my Love, my Be,<br>
-To hold you close eternally.<br>
-For in this life and worlds above,<br>
-I’ll find you still — my only love.<br><br>
-
-Forever yours,<br>
-<em>— Whendel, your Baby 💚</em><br>
+Palaging sa’yo,<br>
+<em>— Whendel Carulasan <3</em><br>
 `;
 
       function revealLetter() {
@@ -278,7 +315,7 @@ Forever yours,<br>
           }
           letterContent.innerHTML += text[i];
           i++;
-        }, 18);
+        }, 50);
       }
 
       function wrongFeedback() {
