@@ -1,349 +1,870 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Secret Love Letter</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mia Mirasol</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- 🌿 Romantic Fonts -->
+    <!-- Google Font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-
+    <!-- Add GSAP CDN in <head> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- ✅ Include SwiperJS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
-      :root {
-        --sage-500: #9caf88;
-        --sage-200: #dbe9d6;
-        --bg: #f6fbf6;
-        --accent: #fce8ef;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        color: #333;
-      }
-
-      h1,
-      h2 {
+      .special-font {
         font-family: "Great Vibes", cursive;
-        letter-spacing: 0.5px;
+        font-size: 3.5rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #2c3e50;
+        -webkit-text-stroke: 1px #f6c90e;
+        paint-order: stroke fill;
+        white-space: nowrap;
+        display: inline-block;
+        min-width: 25ch;
       }
 
-      .hearts {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
+      .section-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        text-align: center;
       }
-      .heart {
-        position: absolute;
-        bottom: -10%;
-        font-size: 18px;
-        opacity: 0.9;
-        transform: translateY(0) scale(1);
-        animation: rise var(--d, 8s) linear infinite;
-        user-select: none;
+
+      html {
+        scroll-behavior: smooth;
       }
-      @keyframes rise {
+      #heroBg {
+        will-change: transform;
+      }
+      @keyframes marquee {
         0% {
-          transform: translateY(0) scale(0.8);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
+          transform: translateX(0);
         }
         100% {
-          transform: translateY(-120vh) scale(1.2);
-          opacity: 0;
+          transform: translateX(-50%);
         }
       }
-
-      @keyframes shakeX {
-        10%,
-        90% {
-          transform: translateX(-1px);
-        }
-        20%,
-        80% {
-          transform: translateX(2px);
-        }
-        30%,
-        50%,
-        70% {
-          transform: translateX(-4px);
-        }
-        40%,
-        60% {
-          transform: translateX(4px);
-        }
-      }
-      .shake {
-        animation: shakeX 600ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-      }
-
-      .paper {
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.95),
-          rgba(255, 255, 255, 0.9)
-        );
-        border: 1px solid rgba(156, 175, 136, 0.12);
-        box-shadow: 0 10px 30px rgba(24, 24, 24, 0.06);
-        border-radius: 14px;
-        backdrop-filter: blur(4px);
-        position: relative;
-        z-index: 1;
-      }
-
-      #letterContent {
-        font-family: "Poppins", sans-serif;
-        line-height: 1.8;
-        font-size: 1rem;
-      }
-
-      em {
-        font-family: "Great Vibes", cursive;
-        font-size: 1.3rem;
-        color: var(--sage-500);
+      .animate-marquee {
+        display: flex;
+        width: 200%; /* contains both sets */
+        animation: marquee 25s linear infinite;
       }
     </style>
   </head>
 
-  <body
-    class="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8"
-    style="background: linear-gradient(180deg, var(--bg), #ffffff)"
-  >
-    <div class="hearts" aria-hidden="true"></div>
+  <body class="bg-[#FFFDF6] font-sans">
+    <header
+      class="fixed w-full top-0 left-0 z-50 shadow-md bg-gradient-to-r from-white to-[#9CAF88]"
+    >
+      <nav
+        class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-[#2c3e50]">My Portfolio</a>
 
-    <main class="w-full max-w-md sm:max-w-lg md:max-w-2xl">
-      <div class="paper p-6 sm:p-8">
-        <div
-          class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 text-center sm:text-left"
-        >
-          <h1
-            class="text-3xl sm:text-4xl font-bold mb-2 sm:mb-0"
-            style="color: var(--sage-500)"
-          >
-            Happy 3rd Monthsarry, Darling!
-          </h1>
+        <ul class="hidden md:flex gap-8 text-gray-800 font-semibold">
+          <li>
+            <a href="#about" class="hover:text-[#2c3e50] transition"
+              >PERSONAL INFORMATION</a
+            >
+          </li>
+          <li>
+            <a href="#introduction" class="hover:text-[#2c3e50] transition"
+              >INTRODUCTION</a
+            >
+          </li>
+          <li>
+            <a href="#artifacts" class="hover:text-[#2c3e50] transition"
+              >LEARNING ARTIFACTS</a
+            >
+          </li>
+          <li>
+            <a href="#evidence" class="hover:text-[#2c3e50] transition"
+              >MULTIMEDIA EVIDENCE</a
+            >
+          </li>
+          <li>
+            <a href="#reflection" class="hover:text-[#2c3e50] transition"
+              >RFA</a
+            >
+          </li>
+          <li>
+            <a href="#future-goals" class="hover:text-[#2c3e50] transition"
+              >FUTURE GOALS</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menuBtn" class="text-gray-800 focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-gradient-to-b from-white to-[#9CAF88] px-8 pb-4 transition-all duration-300"
+      >
+        <ul class="flex flex-col gap-4 text-gray-800 font-semibold">
+          <li>
+            <a href="#about" class="hover:text-[#2c3e50] transition"
+              >PERSONAL INFORMATION</a
+            >
+          </li>
+          <li>
+            <a href="#introduction" class="hover:text-[#2c3e50] transition"
+              >INTRODUCTION</a
+            >
+          </li>
+          <li>
+            <a href="#artifacts" class="hover:text-[#2c3e50] transition"
+              >LEARNING ARTIFACTS</a
+            >
+          </li>
+          <li>
+            <a href="#evidence" class="hover:text-[#2c3e50] transition"
+              >MULTIMEDIA EVIDENCE</a
+            >
+          </li>
+          <li>
+            <a href="#reflection" class="hover:text-[#2c3e50] transition"
+              >RFA</a
+            >
+          </li>
+          <li>
+            <a href="#future-goals" class="hover:text-[#2c3e50] transition"
+              >FUTURE GOALS</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section
+      id="about"
+      class="py-20 px-6 bg-[#FFFDF6] flex flex-col items-center"
+    >
+      <h2 class="section-title">Personal Information</h2>
+
+      <!-- Container -->
+      <div
+        class="max-w-5xl w-full bg-white border border-gray-200 shadow-xl rounded-2xl p-10 md:p-14 flex flex-col md:flex-row gap-10 items-center"
+      >
+        <!-- Profile Image -->
+        <div class="flex-shrink-0">
+          <img
+            src="images/be.png"
+            alt="Profile Picture"
+            class="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full border-4 border-[#2c3e50] shadow-md"
+          />
         </div>
 
-        <!-- Password Section -->
-        <section id="passwordSection" class="mb-6">
-          <label
-            for="pwd"
-            class="block text-sm font-medium text-gray-700 mb-2 text-center sm:text-left"
-          >
-            What's the password?
-          </label>
-          <div
-            class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
-          >
-            <input
-              id="pwd"
-              type="password"
-              inputmode="numeric"
-              maxlength="6"
-              autocomplete="off"
-              class="flex-1 px-4 py-3 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-[var(--sage-500)] focus:ring-opacity-60"
-              placeholder="Enter 6-digit code"
-            />
-            <button
-              id="openBtn"
-              class="px-5 py-3 rounded-lg text-sm font-semibold w-full sm:w-auto"
-              style="background: var(--sage-500); color: white"
-            >
-              Open
-            </button>
-          </div>
-          <p
-            id="hint"
-            class="mt-2 text-xs text-gray-500 text-center sm:text-left italic"
-          >
-            Tip: the password is six digits (try a special date... 💚)
+        <!-- Details -->
+        <div class="flex-1 space-y-6 text-gray-700 text-lg leading-relaxed">
+          <!-- Intro -->
+          <p class="text-justify text-gray-600 italic">
+            Hello! I’m
+            <span class="font-semibold text-[#2c3e50]">Mia Mirasol</span>,
+            Welcome to my Electronic Portfolio! I am currently a 3rd year
+            College Student of Palawan State University in Brooke's Point,
+            Palawan. I am majoring in Bachelor of Elementary Education. Thank
+            you for taking the time to vising my site and learn a little bit
+            more about me.
           </p>
-        </section>
 
-        <!-- Love Letter Section -->
-        <section
-          id="letterSection"
-          class="hidden transition-opacity duration-700 ease-out"
-        >
-          <div
-            class="p-4 sm:p-6 rounded-md"
-            style="
-              background: linear-gradient(180deg, var(--accent), #fff);
-              border: 1px solid rgba(156, 175, 136, 0.06);
-            "
-          >
-            <div
-              id="letterContent"
-              class="text-gray-700 leading-relaxed text-sm sm:text-base"
-              aria-live="polite"
-            ></div>
-          </div>
-        </section>
+          <!-- Information List -->
+          <ul class="space-y-5">
+            <!-- Full Name -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.785.676 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Full Name:</span> Mia Dela Torre
+                Mirasol</span
+              >
+            </li>
+
+            <!-- Birthday -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Birthday:</span> May 19, 2003</span
+              >
+            </li>
+
+            <!-- Email -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 12H8m8 0l-4 4m4-4l-4-4"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Email:</span>
+                miamirasol19@gmail.com</span
+              >
+            </li>
+
+            <!-- Phone -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5v2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 7h2a2 2 0 012 2v2a2 2 0 01-2 2h-2V7zm0 6h2a2 2 0 012 2v2a2 2 0 01-2 2h-2v-6z"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Phone:</span> +63 909 678
+                5397</span
+              >
+            </li>
+
+            <!-- Location -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 11c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zM12 11v10"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Location:</span> Lower Baribe,
+                Brgy. Aribungos, Brooke's Point, Palawan</span
+              >
+            </li>
+
+            <!-- Profession -->
+            <li class="flex items-center gap-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-[#2c3e50]/10"
+              >
+                <svg
+                  class="w-6 h-6 text-[#2c3e50]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"
+                  />
+                </svg>
+              </div>
+              <span
+                ><span class="font-semibold">Profession:</span> Student</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <footer
-        class="mt-6 text-center text-[10px] sm:text-xs text-gray-400 italic"
-      ></footer>
-    </main>
+    <!-- Education Section -->
+    <section
+      id="introduction"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Introduction</h2>
 
-    <!-- Hidden YouTube Player -->
-    <div id="player" style="display: none"></div>
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        I believe that education is not just about acquiring knowledge, but
+        about nurturing curiosity, values, and the ability to inspire others. As
+        a future educator, I see teaching as a way of guiding learners to
+        discover their own potential, encouraging lifelong learning, and shaping
+        them into responsible individuals who can make a difference in society.
+      </p>
+    </section>
+
+    <!-- Learning Artifacts Section -->
+    <section
+      id="artifacts"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Learning Artifacts</h2>
+
+      <!-- Carousel Container -->
+      <div class="swiper mt-10 w-full max-w-5xl">
+        <div class="swiper-wrapper">
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art1.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art1.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art2.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art2.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art3.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art3.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art4.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art4.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art5.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art5.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art6.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art6.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art8.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art8.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art10.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art10.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art11.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art11.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art13.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art13.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Example Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+              <img
+                src="images/art14.jfif"
+                alt="Assignment Artifact"
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-4 text-left">
+                <a
+                  href="images/art14.jfif"
+                  class="text-[#2c3e50] font-medium hover:underline"
+                  target="_blank"
+                  >View Image →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-6">
+          <div class="swiper-button-prev text-[#2c3e50]"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next text-[#2c3e50]"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multimedia Evidence Section -->
+    <section
+      id="evidence"
+      class="py-12 px-4 sm:py-16 sm:px-6 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Multimedia Evidence</h2>
+
+      <!-- Infinite Marquee Carousel -->
+      <div class="relative w-full overflow-hidden mt-8 sm:mt-10">
+        <div class="flex animate-marquee space-x-3 sm:space-x-4">
+          <!-- First set of images -->
+          <img
+            src="images/a1.jpg"
+            alt="Evidence 1"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a2.jpg"
+            alt="Evidence 2"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a3.jpg"
+            alt="Evidence 3"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a4.jpg"
+            alt="Evidence 4"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a5.jpg"
+            alt="Evidence 5"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a6.jpg"
+            alt="Evidence 6"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a7.jpg"
+            alt="Evidence 7"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a8.jpg"
+            alt="Evidence 8"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a9.jpg"
+            alt="Evidence 9"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a10.jpg"
+            alt="Evidence 10"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+
+          <!-- Duplicate set for looping -->
+          <img
+            src="images/a1.jpg"
+            alt="Evidence 1"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a2.jpg"
+            alt="Evidence 2"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a3.jpg"
+            alt="Evidence 3"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a4.jpg"
+            alt="Evidence 4"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a5.jpg"
+            alt="Evidence 5"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a6.jpg"
+            alt="Evidence 6"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a7.jpg"
+            alt="Evidence 7"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a8.jpg"
+            alt="Evidence 8"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a9.jpg"
+            alt="Evidence 9"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+          <img
+            src="images/a10.jpg"
+            alt="Evidence 10"
+            class="h-40 sm:h-52 md:h-64 rounded-lg shadow-md object-cover"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Reflection, Feedback, and Assessment Section -->
+    <section
+      id="reflection"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Reflection, Feedback, and Assessment</h2>
+
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        As a student and at the same time, as a future educator learning through
+        this journey in technology/subject has changed the way I understand and
+        experience technology in education. Instead of focusing to the
+        traditional way of teaching, technology allows me to explore topics in
+        more interactive and engaging ways. I can collaborate, participate in
+        online activities, and access information instantly. This makes learning
+        feel more real, relatable, and exciting.
+        <br /><br />
+        One of the biggest things I gained is independent learning skills.
+        Technology taught me how to search for answers, analyze information, and
+        make the subject more interesting and fun. I realized that learning is
+        not only something that happens inside the classroom—it continues
+        whenever I am curious and willing to explore.
+        <br /><br />
+        Technology also made collaboration easier. Even when my classmates and I
+        are not together physically, we can still work on projects, share ideas,
+        and communicate through online platforms.This taught me how to work with
+        others, respect different opinions, and contribute meaningfully to group
+        tasks.
+        <br /><br />
+        Most importantly, learning with this subject prepared me for the modern
+        world since, almost every aspect of life today uses technology, and
+        being familiar with it gives me a courage to be confidence. I feel more
+        capable of adapting to new tools, new tasks, and even new learning
+        environments.
+        <br /><br />
+        And lastly, this subject (Technology for Teaching and Learning) did not
+        only help me understand lessons better—it helped me grow as a learner or
+        as an individual. It improved my creativity, critical thinking, and
+        responsibility. As an individual who spend most of the time using the
+        technology, I should be more responsible or take every action I make
+        into account. Through technology, I learned that education is not just
+        about memorizing facts, but about discovering knowledge and building
+        skills that will guide me in the future.
+      </p>
+    </section>
+
+    <!-- Future Goals Section -->
+    <section
+      id="future-goals"
+      class="py-20 px-8 bg-[#FFFDF6] flex flex-col items-center text-center"
+    >
+      <h2 class="section-title">Future Goals</h2>
+
+      <p class="max-w-3xl text-gray-700 text-lg mt-4 leading-relaxed">
+        My future goals in life is to see myself success in everything that I
+        dream of. I want to see myself happy and contented in life, achieved
+        every goals that I set in my past journey and also, I want to make
+        myself and parents proud. Lastly, seeing myself loving the same person
+        that I love today.
+      </p>
+    </section>
 
     <script>
-      // Load YouTube IFrame API
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      const swiper = new Swiper(".swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 }, // tablet
+          1024: { slidesPerView: 3 }, // desktop
+        },
+      });
+      // Typewriter Effect
+      const nameText = "Mia D. Mirasol";
+      const nameElement = document.getElementById("name");
+      let i = 0;
+      let isDeleting = false;
 
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player("player", {
-          height: "0",
-          width: "0",
-          videoId: "exi6u6Gp5nE", // Celeste by Tothapi
-          playerVars: {
-            autoplay: 1,
-            loop: 1,
-            playlist: "exi6u6Gp5nE", // kailangan same video ID para mag-loop
-            controls: 0,
-            modestbranding: 1,
-            rel: 0,
-            mute: 0,
-          },
-          events: {
-            onReady: function (event) {
-              // hindi agad magp-play, hihintayin natin ang password
-            },
+      function typeWriter() {
+        if (!isDeleting && i < nameText.length) {
+          nameElement.textContent = nameText.substring(0, i + 1);
+          i++;
+          setTimeout(typeWriter, 150);
+        } else if (isDeleting && i > 0) {
+          nameElement.textContent = nameText.substring(0, i - 1);
+          i--;
+          setTimeout(typeWriter, 100);
+        } else if (i === nameText.length) {
+          setTimeout(() => {
+            isDeleting = true;
+            typeWriter();
+          }, 1500);
+        } else if (i === 0 && isDeleting) {
+          isDeleting = false;
+          setTimeout(typeWriter, 500);
+        }
+      }
+      window.onload = typeWriter;
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      // Parallax effect for Hero background
+      const heroBg = document.getElementById("heroBg");
+      window.addEventListener("scroll", () => {
+        const offset = window.scrollY;
+        // Adjust the 0.5 multiplier to control speed
+        heroBg.style.transform = `translateY(${offset * 0.5}px)`;
+      });
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animate each section on scroll
+      document.querySelectorAll("section").forEach((section, i) => {
+        gsap.from(section, {
+          opacity: 0,
+          y: 80, // slide up
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%", // when 80% of section enters viewport
+            toggleActions: "play none none reverse",
           },
         });
-      }
-
-      // Trigger play after correct password
-      function playYTMusic() {
-        if (player && player.playVideo) {
-          player.playVideo();
-        }
-      }
-
-      // Sa iyong tryOpen() function:
-      function tryOpen() {
-        const val = (pwdInput.value || "").trim();
-        if (val === CORRECT) {
-          document.getElementById("passwordSection").style.display = "none";
-          revealLetter();
-          playYTMusic(); // simulan ang YouTube music
-        } else {
-          wrongFeedback();
-        }
-        pwdInput.value = "";
-      }
-
-      const CORRECT = "070725";
-      const pwdInput = document.getElementById("pwd");
-      const openBtn = document.getElementById("openBtn");
-      const letterSection = document.getElementById("letterSection");
-      const letterContent = document.getElementById("letterContent");
-      const heartsLayer = document.querySelector(".hearts");
-
-      function spawnHearts(count = 8) {
-        const chars = ["❤", "💕", "💖", "💘", "❣️"];
-        for (let i = 0; i < count; i++) {
-          const s = document.createElement("div");
-          s.className = "heart";
-          s.style.left = Math.random() * 100 + "%";
-          s.style.fontSize = 12 + Math.random() * 24 + "px";
-          s.style.setProperty("--d", 8 + Math.random() * 6 + "s");
-          s.style.opacity = 0.7 * Math.random();
-          s.textContent = chars[Math.floor(Math.random() * chars.length)];
-          heartsLayer.appendChild(s);
-        }
-      }
-      spawnHearts(8);
-
-      const LOVE_LETTER = `
-My dearest Mia, my Mahal, my Darling,<br><br>
-
-Sa tatlong buwang kay bilis lumipas,<br>
-Pag-ibig natin, tila’y di kumukupas.<br>
-Madalas mang magtalo, magtampuhan paminsan,<br>
-Sa dulo’y lambingan, halakhak, at asaran.<br><br>
-
-Lagi, sa dapithapon na payapang dumaratal,<br>
-Boses mong musika sa araw kong banal.<br>
-Sa bawat tampo’t pagdaramdam na dumadalaw,<br>
-Isang “Mahal kita” lang muling naglalaho ang alingawngaw.<br><br>
-
-Nangako akong ikaw ay dadalhin sa altar,<br>
-Iibigin ka nang lampas sa hangganang mortal.<br>
-Sa’yo ko natutunang mangarap nang gising,<br>
-Habang buhay, ikaw ang dahilan ng aking pag-ising.<br><br>
-
-Sa mata ng pag-ibig na kailanma’y di magmamaliw,<br>
-Mamahalin kitang tapat hanggang sa dulo ng langit, aking giliw.<br><br>
-
-Palaging sa’yo,<br>
-<em>— Whendel Carulasan <3</em><br>
-`;
-
-      function revealLetter() {
-        letterSection.classList.remove("hidden");
-        letterSection.style.opacity = 0;
-        setTimeout(() => (letterSection.style.opacity = 1), 40);
-        letterContent.innerHTML = "";
-        const text = LOVE_LETTER;
-        let i = 0;
-        const interval = setInterval(() => {
-          if (i >= text.length) {
-            clearInterval(interval);
-            return;
-          }
-          if (text[i] === "<") {
-            const j = text.indexOf(">", i);
-            if (j > -1) {
-              letterContent.innerHTML += text.slice(i, j + 1);
-              i = j + 1;
-              return;
-            }
-          }
-          letterContent.innerHTML += text[i];
-          i++;
-        }, 50);
-      }
-
-      function wrongFeedback() {
-        pwdInput.classList.add("ring-2", "ring-red-300");
-        pwdInput.classList.add("shake");
-        setTimeout(() => {
-          pwdInput.classList.remove("ring-2", "ring-red-300", "shake");
-        }, 700);
-      }
-
-      function tryOpen() {
-        const val = (pwdInput.value || "").trim();
-        if (val === CORRECT) {
-          document.getElementById("passwordSection").style.display = "none";
-          revealLetter();
-        } else {
-          wrongFeedback();
-        }
-        pwdInput.value = "";
-      }
-
-      openBtn.addEventListener("click", tryOpen);
-      pwdInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") tryOpen();
       });
 
-      window.addEventListener("load", () => pwdInput.focus());
+      // Extra: Animate navbar when page loads
+      gsap.from("header", {
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // Animate profile image
+      gsap.from(".rounded-full", {
+        scale: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "elastic.out(1, 0.5)",
+      });
+
+      // Animate name with fade-in (while typewriter still runs)
+      gsap.from("#name", {
+        opacity: 0,
+        duration: 1,
+        delay: 1.2,
+      });
     </script>
   </body>
 </html>
-
